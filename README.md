@@ -5,7 +5,7 @@ ___
 ## Setup/ restructure project
 ___
 This Part:
-- separate src an tests
+- separate src and tests
 - turn project into an installable package
 
 Structure of file:  
@@ -31,7 +31,7 @@ Or still you can use setup tools.
 
 pyproject.toml just tells us that we are using the old  way.
 
-[pyproject.toml]
+<b>file</b>:pyproject.toml
 ```
 [build-system]
 requires = ["setuptools>=42.0", "wheel"]
@@ -43,7 +43,7 @@ build-backend = "setuptools.build_meta"
 And this is seen increasingly as a security risk. and so more and more code is stripped out of setup.py 
 file and put into these other configuration files
 
-[setup.py]
+<b>file</b>:setup.py
 ```python
 from setuptools import setup
 
@@ -51,13 +51,14 @@ if __name__ == "__main__":
     setup()
 ```
 even though this file is empty it will help us to install our package
-in editable mode.
+in editable mode.  
+
 3. setup.cfg  
 Now all the metadata of my project like the title and description goes in the setup.cfg file.  
 since this is just a configuration file and not a python script, no need to worry about executing
 arbitrary code.
 
-[setup.cfg]
+<b>file</b>:setup.cfg
 ```
 [metadata]
 name = slapping
@@ -100,7 +101,8 @@ it everytime we make some changes.
 ___
 ## Step 2:
 Creating another requirements file which has just development requirements  
-[requirements_dev.txt]
+
+<b>file</b>:requirements_dev.txt
 ```
 flake8==3.9.2
 tox==3.24.3
@@ -110,7 +112,7 @@ mypy===0.910
 ```
 Similarly updating the setup.cfg file  
 
-[setup.cfg]
+<b>file</b>:setup.cfg
 ```
 [options.extras_require]
 testing =
@@ -123,7 +125,7 @@ testing =
 Add below section in setup.cfg file to indicate that the python 
 package has been type hinted  
 
-[setup.cfg]
+<b>file</b>:setup.cfg
 ```
 [options.package_data]
 slapping = py.typed
@@ -132,7 +134,7 @@ Add another blank file "py.typed" in slapping folder right next to init file of 
 
 Then we are adding one more line in config file for the flake8 program that we're going to be using
   
-[setup.cfg]
+<b>file</b>:setup.cfg
 ```
 [flake8]
 max-line-length = 160
